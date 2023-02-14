@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const goalSchema =  mongoose.Schema({
     user:{
-        type: mongoose.Shecma.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: 'User'
     },

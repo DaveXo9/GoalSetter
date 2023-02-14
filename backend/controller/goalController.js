@@ -6,7 +6,6 @@ const User = require('../models/userModel');
 
 const asyncHandler = require('express-async-handler');
 
-const router = express.Router();
 // For try and catch you can use only async
 
 //@desc get goals

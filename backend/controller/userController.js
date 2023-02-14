@@ -4,8 +4,9 @@ const mongoose = require('mongoose');
 const User = require('../models/userModel');
 
 const jwt = require('jsonwebtoken');
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcryptjs-react');
 const asyncHandler = require('express-async-handler');
+
 
 
 // @desc    Register new user
@@ -99,5 +100,6 @@ const generateToken = (id) =>{
 module.exports = {
     registerUser,
     getUserData,
-    loginUser
+    loginUser,
 }
+
