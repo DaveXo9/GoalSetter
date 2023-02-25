@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const User = require('../models/userModel');
 
 const jwt = require('jsonwebtoken');
-const bcrypt = require('bcryptjs-react');
+const bcrypt = require('bcryptjs');
 const asyncHandler = require('express-async-handler');
 
 
@@ -93,7 +93,7 @@ const loginUser = asyncHandler(async (req, res) => {
 
 const generateToken = (id) =>{
     return jwt.sign({id}, process.env.JWT_SECRET, {
-        expiresIn: '30d'
+        expiresIn: '1d'
     })
 }
 
