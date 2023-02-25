@@ -4,7 +4,8 @@ import {useSelector, useDispatch} from 'react-redux'
 import GoalForm from '../components/goalForm'
 import GoalItem from '../components/GoalItem'
 import Spinner from '../components/Spinner'
-import { getGoals, reset } from '../features/goal/goalSlice'
+import { getGoals } from '../features/goal/goalSlice'
+import { reset } from '../features/auth/authSlice'
 
 
 function Dashboard() {
