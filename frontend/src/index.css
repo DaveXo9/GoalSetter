@@ -107,6 +107,14 @@ h3 {
   border: none;
   background: none;
 }
+.goal .edit {
+  position: absolute;
+  bottom: 10px;
+  right: 15px;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
 
 .form,
 .content {
@@ -130,6 +138,25 @@ h3 {
 }
 
 .form-group label {
+  text-align: left;
+  display: block;
+  margin: 0 0 5px 3px;
+}
+
+.form-search input,
+.form-search textarea,
+.form-search select {
+  width: 120%;
+  padding: 10px;
+  position: relative;
+  border: 1px solid #e6e6e6;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  margin-top: 9px;
+  font-family: inherit;
+}
+
+.form-search label {
   text-align: left;
   display: block;
   margin: 0 0 5px 3px;

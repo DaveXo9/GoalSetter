@@ -1,5 +1,5 @@
-import {useEffect} from 'react'
-import {useNavigate} from 'react-router-dom'
+import {useEffect, useState} from 'react'
+import {useNavigate, useLocation} from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux' 
 import GoalForm from '../components/goalForm'
 import GoalItem from '../components/GoalItem'
@@ -9,9 +9,10 @@ import { reset } from '../features/auth/authSlice'
 
 
 function Dashboard() {
-  
+  const [currentId, setCurrentId] = useState(0)
   const navigate = useNavigate()
   const dispatch = useDispatch()
+  const location = useLocation()
   const {user} = useSelector(state => state.auth)
   const { goals, isLoading, isError, message } = useSelector(
      (state) => state.goal
@@ -23,7 +24,9 @@ function Dashboard() {
     if (user== null) { // if user is not logged in
       navigate('/login')
     } 
+    if(location.pathname === '/'){
     dispatch(getGoals())
+    }
 
     return () => {
       dispatch(reset())
@@ -38,16 +41,16 @@ function Dashboard() {
         <h1>Welcome {user && user.name}</h1>
         <p>Goals Dashboard</p>
       </section>
-      <GoalForm/>
+      <GoalForm currentId={currentId} setCurrentId={setCurrentId}  />
       <section className='content'>
         {goals.length > 0 ? (
           <div className='goals'>
             {goals.map((goal) => (
-              <GoalItem key={goal._id} goal={goal} />
+              <GoalItem currentId={currentId} setCurrentId={setCurrentId} key={goal._id} goal={goal} />
             ))}
           </div>
         ) : (
-          <h3>You have not set any goals</h3>
+          <h3>There are no goals</h3>
         )}
       </section>
     </>

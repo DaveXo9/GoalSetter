@@ -1,17 +1,43 @@
-import { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { createGoal } from '../features/goal/goalSlice'
+import { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { createGoal, updateGoal} from '../features/goal/goalSlice'
 
-function GoalForm() {
+
+function GoalForm({ currentId, setCurrentId }) {
   const [text, setText] = useState('')
+  const [data, setData] = useState({id: '', goal: ''})
+
+  const goal = useSelector((state) =>
+    currentId ? state.goal.goals.find((p) => p._id === currentId) : null
+  )
+
+  useEffect(() => {
+    if (goal) setText(goal.text)
+  }, [goal])
+  
+  
+  useEffect(() => {
+    setData({id: currentId, goal: text})
+    
+  },[currentId, text])
+
 
   const dispatch = useDispatch()
 
   const onSubmit = (e) => {
     e.preventDefault()
+    if(currentId === 0){
+      dispatch(createGoal({ text }))
+      console.log(currentId)
+      setText('')
 
-    dispatch(createGoal({ text }))
-    setText('')
+    } else{
+      setData({id: currentId, goal: text})
+      dispatch(updateGoal({...data}))
+      setText('')
+      setCurrentId(0)
+
+    }
   }
 
   return (

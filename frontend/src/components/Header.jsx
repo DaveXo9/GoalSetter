@@ -1,13 +1,26 @@
 import React from 'react'
+import { useEffect, useState } from 'react'
 import {FaSignInAlt, FaSignOutAlt, FaUser} from 'react-icons/fa'
 import {Link, useNavigate} from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux'
 import {logout,reset} from '../features/auth/authSlice'
+import { searchGoals } from '../features/goal/goalSlice'
 
 function Header() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const {user} = useSelector((state) => state.auth)
+    const [searchQuery, setSearchQuery] = useState('')
+
+    const onSubmit = (e) => {
+        e.preventDefault(  )
+        if(searchQuery){
+            dispatch(searchGoals(searchQuery))
+            navigate(`/search?searchQuery=${searchQuery}`)
+            setSearchQuery('')
+        }
+    }
+
 
     const onLogout = () => {
         dispatch(logout())
@@ -19,6 +32,19 @@ function Header() {
         <div className='logo'>
             <Link to='/'>GoalSetter</Link>
         </div>
+        <form onSubmit={onSubmit}>
+
+        <div className='form-search'>
+          <input
+            type='text'
+            name='text'
+            id='text'
+            placeholder='Search Goals'
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            />
+        </div>
+        </form>
         <ul>
             {user ? (<li>
                         <button className='btn' onClick={onLogout}>
