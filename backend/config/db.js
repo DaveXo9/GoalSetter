@@ -9,11 +9,11 @@ const connectDb = async () => {
         //     useUnifiedTopology: true,
         //     useCreateIndex: true
         // });
-        process.exit(1);
         console.log(`MongoDB connected: ${conn.connection.host}`.cyan.underline.bold);
     }
     catch(error) {
         console.log(`Error: ${error.message}`.red.underline.bold);
+        process.exit(1);
     }
 }
 
