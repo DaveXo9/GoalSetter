@@ -19,3 +19,6 @@ GoalSetter includes a robust search feature that enables users to quickly find s
 User Authentication with JWT:
 
 To ensure data security and user privacy, GoalSetter implements user authentication using JSON Web Tokens (JWT). Users must authenticate themselves before accessing their goals or performing any CRUD operations, ensuring that each user's data is protected.
+
+![CaptureGoalLogin](https://github.com/DaveXo9/GoalSetter/assets/85836822/42149659-68f2-4cd6-9155-59035c495866)
+![CaptureGoalSetter](https://github.com/DaveXo9/GoalSetter/assets/85836822/48980caa-14fd-48f4-8275-b3644d3d02d9)
