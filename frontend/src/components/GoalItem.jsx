@@ -1,11 +1,9 @@
 import { useDispatch } from 'react-redux'
-import {useNavigate} from 'react-router-dom'
 import { deleteGoal} from '../features/goal/goalSlice'
 import {AiFillEdit} from 'react-icons/ai'
 
 function GoalItem({currentId, setCurrentId, goal }) {
   const dispatch = useDispatch()
-  const navigate = useNavigate()
 
   const selectPost = (e) => {
     setCurrentId(goal._id);
